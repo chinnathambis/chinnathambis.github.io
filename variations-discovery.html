@@ -22,175 +22,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/base.css">
-<style>
-/* ================= READING PROGRESS ================= */
-.progress{position:fixed;left:0;top:0;height:1px;width:100%;z-index:60;background:var(--accent);transform-origin:0 50%;transform:scaleX(var(--p,0));pointer-events:none}
-
-/* ================= INTRO ================= */
-.cs-intro{padding:calc(var(--header-h) + clamp(64px,10vw,128px)) 0 0}
-.cs-intro h1{
-  font-family:var(--serif);font-weight:350;
-  font-size:clamp(40px,7.4vw,96px);line-height:1;letter-spacing:-.035em;
-  margin:24px 0 0;max-width:16ch;
-  view-transition-name:vd-title;
-}
-.cs-intro h1 em{font-style:italic;color:var(--accent);font-weight:300}
-.cs-lede{max-width:620px;color:var(--ink-soft);font-size:clamp(17px,1.7vw,19px);margin:32px 0 0}
-.meta{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  margin-top:clamp(48px,7vw,80px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-}
-.meta div{padding:20px 20px 22px 0}
-.meta div + div{padding-left:20px;border-left:1px solid var(--line)}
-.meta dt{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
-.meta dd{margin:0;font-size:15px}
-@media (max-width:760px){
-  .meta{grid-template-columns:1fr 1fr}
-  .meta div:nth-child(3){padding-left:0;border-left:0}
-  .meta div:nth-child(n+3){border-top:1px solid var(--line)}
-}
-
-/* ================= LAYOUT: sticky index + body ================= */
-.cs-grid{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(32px,6vw,88px);margin-top:clamp(64px,9vw,112px)}
-.toc{position:sticky;top:calc(var(--header-h) + 32px);align-self:start}
-.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
-.toc a{
-  display:block;padding:7px 0 7px 16px;margin-left:-1px;border-left:1px solid transparent;
-  font-family:var(--mono);font-size:12px;letter-spacing:.03em;color:var(--ink-soft);text-decoration:none;
-  transition:color var(--dur-fast) var(--ease), border-color var(--dur-med) var(--ease);
-}
-.toc a:hover{color:var(--ink)}
-.toc a[aria-current="true"]{color:var(--ink);border-left-color:var(--accent)}
-@media (max-width:1000px){ .cs-grid{grid-template-columns:1fr} .toc{display:none} }
-
-.cs-body{max-width:720px}
-.cs-sec{padding-bottom:clamp(80px,11vw,136px)}
-.cs-sec:last-child{padding-bottom:0}
-.cs-sec > .kicker{display:block;margin-bottom:14px}
-.cs-sec h2{
-  font-family:var(--serif);font-weight:400;
-  font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-.02em;margin:0 0 24px;
-}
-.cs-sec p{margin:0 0 18px}
-.cs-sec p.soft{color:var(--ink-soft)}
-.pullquote{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(24px,3vw,34px);line-height:1.25;letter-spacing:-.01em;
-  margin:48px 0 0;padding-left:20px;border-left:1px solid var(--accent);
-}
-
-/* Signal stats */
-.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:32px 0 16px}
-.stat{padding:24px 16px 24px 0}
-.stat + .stat{padding-left:20px;border-left:1px solid var(--line)}
-.stat b{display:block;font-family:var(--serif);font-weight:350;font-size:clamp(36px,5vw,56px);line-height:1;letter-spacing:-.03em}
-.stat span{display:block;margin-top:10px;font-size:14px;color:var(--ink-soft);line-height:1.45}
-@media (max-width:640px){
-  .stats{grid-template-columns:1fr}
-  .stat,.stat + .stat{padding:20px 0;border-left:0}
-  .stat + .stat{border-top:1px solid var(--line)}
-}
-
-/* Exploration list */
-.scan{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 28px}
-.tag{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
-.directions{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
-.directions li{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.directions .n{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
-.directions .rejected .d{text-decoration:line-through;text-decoration-color:var(--ink-soft);color:var(--ink-soft)}
-.directions .why{display:block;text-decoration:none;font-family:var(--mono);font-size:12px;color:var(--brass);margin-top:4px}
-
-/* The Decision — the visually prominent moment */
-.decision{
-  border:1px solid var(--accent);background:var(--accent-soft);border-radius:14px;
-  padding:clamp(28px,4vw,48px);margin:8px 0 0;
-}
-.decision .statement{
-  font-family:var(--serif);font-weight:350;font-size:clamp(28px,4.4vw,48px);line-height:1.08;letter-spacing:-.025em;margin:14px 0 32px;
-}
-.decision .statement em{font-style:italic;color:var(--accent)}
-.decision-map{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid color-mix(in srgb, var(--accent) 35%, transparent)}
-.decision-map div{padding:20px 20px 0 0}
-.decision-map div + div{padding-left:20px;border-left:1px solid color-mix(in srgb, var(--accent) 35%, transparent)}
-.decision-map .kicker{color:var(--ink)}
-.decision-map p{margin:8px 0 0;font-family:var(--serif);font-size:clamp(18px,2vw,22px);line-height:1.3}
-@media (max-width:560px){
-  .decision-map{grid-template-columns:1fr}
-  .decision-map div + div{padding-left:0;border-left:0;border-top:1px solid color-mix(in srgb, var(--accent) 35%, transparent);margin-top:20px}
-}
-
-/* Screenshot placeholders */
-.shot{
-  border:1px dashed var(--line);border-radius:12px;
-  aspect-ratio:16/9;display:grid;place-items:center;text-align:center;padding:24px;margin:28px 0;
-  background:color-mix(in srgb, var(--bg-raised) 60%, transparent);
-}
-.shot.tall{aspect-ratio:4/3}
-
-/* ================= PROTOTYPE ================= */
-.proto{
-  border:1px solid var(--line);border-radius:14px;background:var(--bg-raised);
-  margin:28px 0;overflow:hidden;
-}
-.proto-bar{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
-.proto-stage{position:relative;min-height:440px;padding:clamp(20px,4vw,40px);display:grid;place-items:center;overflow:hidden}
-.result{
-  width:100%;max-width:360px;display:grid;grid-template-columns:96px 1fr;gap:16px;
-  border:1px solid var(--line);border-radius:10px;padding:14px;background:var(--bg);
-}
-.thumb{aspect-ratio:1;border-radius:6px;border:1px dashed var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:var(--ink-soft);text-align:center;padding:4px}
-.result h4{margin:0;font-size:15px;font-weight:500;line-height:1.35}
-.result .price{margin:6px 0 10px;font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
-.var-chip{
-  display:inline-flex;align-items:center;gap:6px;
-  border:1px solid var(--accent);background:var(--accent-soft);color:var(--ink);
-  border-radius:999px;padding:5px 12px;font-family:var(--mono);font-size:12px;cursor:pointer;
-  transition:background-color var(--dur-fast) var(--ease);
-}
-.var-chip:hover{background:color-mix(in srgb, var(--accent) 22%, var(--bg))}
-.selected-line{margin:10px 0 0;font-family:var(--mono);font-size:12px;color:var(--accent);min-height:1em}
-
-.backdrop{position:absolute;inset:0;background:color-mix(in srgb, var(--bg) 70%, transparent);opacity:0;pointer-events:none;transition:opacity var(--dur-med) var(--ease)}
-.sheet{
-  position:absolute;left:0;right:0;bottom:0;
-  background:var(--bg-raised);border-top:1px solid var(--line);border-radius:16px 16px 0 0;
-  padding:12px clamp(16px,4vw,32px) 24px;
-  transform:translateY(102%);transition:transform 420ms var(--ease-out-expo);
-  visibility:hidden;
-}
-.proto.is-open .backdrop{opacity:1;pointer-events:auto}
-.proto.is-open .sheet{transform:none;visibility:visible}
-.sheet .grab{width:36px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 14px}
-.sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.sheet-head h5{margin:0;font-size:15px;font-weight:500}
-.x{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:16px;line-height:1}
-.opts{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-@media (max-width:520px){ .opts{grid-template-columns:1fr 1fr} }
-.opt{
-  border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:12px 8px;cursor:pointer;text-align:center;
-  transition:border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
-}
-.opt b{display:block;font-weight:500;font-size:14px}
-.opt span{display:block;font-family:var(--mono);font-size:11px;color:var(--ink-soft);margin-top:2px}
-.opt:hover{border-color:var(--ink-soft)}
-.opt.selected{border-color:var(--accent);background:var(--accent-soft)}
-.sheet-actions{display:flex;gap:8px;margin-top:16px}
-.sheet-actions button{
-  flex:1;border-radius:8px;padding:11px;cursor:pointer;font-family:var(--mono);font-size:13px;
-  border:1px solid var(--line);background:transparent;
-}
-.sheet-actions button.primary{border-color:var(--accent);background:var(--accent);color:var(--bg)}
-.demo-note{margin:10px 0 0;font-family:var(--mono);font-size:11px;color:var(--brass);min-height:1em;text-align:center}
-
-.scale-tags{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 8px}
-
-/* Next */
-.next{margin-top:clamp(96px,12vw,160px);border-top:1px solid var(--line);padding-top:32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:baseline}
-.next a{font-family:var(--serif);font-size:clamp(24px,3vw,36px);text-decoration:none;letter-spacing:-.015em}
-.next a span{display:inline-block;transition:transform var(--dur-med) var(--ease)}
-.next a:hover span{transform:translateX(-4px)}
-</style>
+<link rel="stylesheet" href="assets/base.css?v=202610011040">
+<link rel="stylesheet" href="assets/case-study.css?v=202610011040">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -202,7 +35,7 @@
     <div class="header-right">
       <nav class="site-nav" aria-label="Primary">
         <ul>
-          <li><a href="#resume" data-placeholder="Résumé PDF — to be added">Résumé</a></li>
+          <li><a href="#resume" data-placeholder="Resume PDF — to be added">Resume</a></li>
           <li><a href="./#contact">Contact</a></li>
         </ul>
       </nav>
@@ -215,7 +48,7 @@
   <section class="cs-intro">
     <div class="wrap">
       <p class="eyebrow">Evidence / 01 · Amazon · Variations Discovery</p>
-      <h1>The product was easy to find. The right variant <em>wasn’t.</em></h1>
+      <h1 style="view-transition-name:vd-title">The product was easy to find. The right variant <em>wasn’t.</em></h1>
       <p class="cs-lede" data-reveal>Making product variations discoverable directly from Search results — without turning the result card into a configurator.</p>
       <dl class="meta" data-reveal>
         <div><dt>Role</dt><dd>Lead UX/UI Designer</dd></div>
@@ -223,6 +56,9 @@
         <div><dt>Duration</dt><dd>6 months</dd></div>
         <div><dt>Status</dt><dd>Launched to production</dd></div>
       </dl>
+      <figure class="cover" data-reveal>
+        <picture><source type="image/webp" srcset="assets/case/vd/cover-phone-400.webp 400w, assets/case/vd/cover-phone-600.webp 600w, assets/case/vd/cover-phone-787.webp 787w" sizes="(max-width: 560px) 72vw, 400px"><img data-full="assets/case/vd/cover-phone-787.webp" src="assets/case/vd/cover-phone.png" width="787" height="1441" alt="Amazon mobile app home screen shown on a phone" fetchpriority="high" decoding="async"></picture>
+      </figure>
     </div>
   </section>
 
@@ -247,7 +83,7 @@
           <h2 id="h-problem" data-reveal>The product was easy to find. The right variant wasn’t.</h2>
           <p data-reveal>Search “Tea Tree Special Shampoo” and the result surfaces the 33 fl oz version. Smaller sizes existed — but nothing on the Search result made them discoverable.</p>
           <p class="soft" data-reveal>Customers who wanted a different size had to land on the wrong one first, then find their way to the right one. The gap wasn’t in the catalogue. It was in what Search chose to show.</p>
-          <div class="shot" data-reveal><span class="flag">[SCREENSHOT NEEDED — existing Search result, before]</span></div>
+          <figure class="ev-card single" data-reveal><div class="ev-head"><span class="ev-n">00</span><span class="ev-label">Current experience</span></div><div class="ev-stage"><picture><source type="image/webp" srcset="assets/case/vd/before-search-result-320.webp 320w, assets/case/vd/before-search-result-480.webp 480w, assets/case/vd/before-search-result-640.webp 640w" sizes="(max-width: 400px) calc(100vw - 32px), 340px"><img data-full="assets/case/vd/before-search-result-640.webp" src="assets/case/vd/before-search-result.png" width="640" height="810" alt="Search result with the variation count shown as text above the ratings" loading="lazy" decoding="async" data-zoom></picture><span class="ev-zoom" aria-hidden="true">↗</span></div><figcaption>Before — the count sits as text above the ratings. About half of participants missed it.</figcaption></figure>
         </section>
 
         <!-- 02 -->
@@ -261,6 +97,12 @@
             <div class="stat"><b>4.58<small style="font-size:.45em;color:var(--ink-soft)">/5</small></b><span>highest clarity rating among concepts</span></div>
           </div>
           <p data-reveal>The existing message wasn’t wrong. It just wasn’t seen. When the concept was made visible, people understood it and acted on it.</p>
+          <div class="evidence" data-reveal>
+            <figure class="ev-card"><div class="ev-head"><span class="ev-n">01</span><span class="ev-label">Clarity ratings</span></div><div class="ev-stage"><picture><source type="image/webp" srcset="assets/case/vd/research-clarity-640.webp 640w, assets/case/vd/research-clarity-960.webp 960w, assets/case/vd/research-clarity-1202.webp 1202w" sizes="(max-width: 640px) 78vw, 240px"><img data-full="assets/case/vd/research-clarity-1202.webp" src="assets/case/vd/research-clarity.png" width="1202" height="696" alt="Bar chart of clarity ratings out of 5 for the current experience and seven concepts" loading="lazy" decoding="async" data-zoom></picture><span class="ev-zoom" aria-hidden="true">↗</span></div><figcaption>Clarity per concept, averaged out of 5. 00 is the current experience.</figcaption></figure>
+            <figure class="ev-card"><div class="ev-head"><span class="ev-n">02</span><span class="ev-label">Heatmaps</span></div><div class="ev-stage"><picture><source type="image/webp" srcset="assets/case/vd/research-heatmaps-00-01-640.webp 640w, assets/case/vd/research-heatmaps-00-01-960.webp 960w, assets/case/vd/research-heatmaps-00-01-1280.webp 1280w, assets/case/vd/research-heatmaps-00-01-1548.webp 1548w" sizes="(max-width: 640px) 78vw, 240px"><img data-full="assets/case/vd/research-heatmaps-00-01-1548.webp" src="assets/case/vd/research-heatmaps-00-01.png" width="1548" height="696" alt="Click-test heatmaps for the current experience and an in-line dropdown concept" loading="lazy" decoding="async" data-zoom></picture><span class="ev-zoom" aria-hidden="true">↗</span></div><figcaption>Click-test heatmaps — current experience (00) vs. in-line dropdown (01).</figcaption></figure>
+            <figure class="ev-card"><div class="ev-head"><span class="ev-n">03</span><span class="ev-label">Search habits</span></div><div class="ev-stage"><picture><source type="image/webp" srcset="assets/case/vd/research-find-versions-640.webp 640w, assets/case/vd/research-find-versions-960.webp 960w, assets/case/vd/research-find-versions-1198.webp 1198w" sizes="(max-width: 640px) 78vw, 240px"><img data-full="assets/case/vd/research-find-versions-1198.webp" src="assets/case/vd/research-find-versions.png" width="1198" height="676" alt="Bar chart of how participants usually find different versions of everyday products" loading="lazy" decoding="async" data-zoom></picture><span class="ev-zoom" aria-hidden="true">↗</span></div><figcaption>How participants usually find other versions of everyday products.</figcaption></figure>
+          </div>
+          <p class="kicker screens-caption ev-hint" data-reveal>Click any chart to enlarge</p>
         </section>
 
         <!-- 03 -->
@@ -269,6 +111,11 @@
           <h2 id="h-exploration" data-reveal>Survey the pattern space. Then narrow it.</h2>
           <p data-reveal>A lightweight competitive scan — not to copy, but to see how others signal “more options exist” at the result level.</p>
           <div class="scan" data-reveal><span class="tag">Walmart</span><span class="tag">Flipkart</span><span class="tag">Temu</span></div>
+          <div class="screens" data-reveal>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/bench-walmart-search-options-320.webp 320w, assets/case/vd/bench-walmart-search-options-478.webp 478w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/bench-walmart-search-options-478.webp" src="assets/case/vd/bench-walmart-search-options.png" width="478" height="1034" alt="Walmart search result with an Options button" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Walmart — Options CTA on the result</figcaption></figure>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/bench-flipkart-bottom-sheet-320.webp 320w, assets/case/vd/bench-flipkart-bottom-sheet-478.webp 478w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/bench-flipkart-bottom-sheet-478.webp" src="assets/case/vd/bench-flipkart-bottom-sheet.png" width="478" height="1037" alt="Flipkart bottom sheet for choosing a pack size" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Flipkart — size choice in a sheet</figcaption></figure>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/bench-temu-bottom-sheet-320.webp 320w, assets/case/vd/bench-temu-bottom-sheet-478.webp 478w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/bench-temu-bottom-sheet-478.webp" src="assets/case/vd/bench-temu-bottom-sheet.png" width="478" height="1037" alt="Temu bottom sheet for choosing a colour variant" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Temu — variant sheet over search</figcaption></figure>
+          </div>
           <p data-reveal>Six directions were explored for the Search result.</p>
           <ol class="directions" data-reveal>
             <li><span class="n">D1</span><span class="d flag">[NEEDS CONFIRMATION — direction name]</span></li>
@@ -278,6 +125,14 @@
             <li><span class="n">D5</span><span class="d flag">[NEEDS CONFIRMATION — direction name]</span></li>
             <li class="rejected"><span class="n">D6</span><span><span class="d">Variation count on the product image</span><span class="why">Rejected — not feasible at scale</span></span></li>
           </ol>
+          <div class="screens scroll" data-reveal>
+            <figure><picture><source type="image/webp" srcset="assets/case/vd/explore-text-link-320.webp 320w, assets/case/vd/explore-text-link-480.webp 480w, assets/case/vd/explore-text-link-640.webp 640w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/explore-text-link-640.webp" src="assets/case/vd/explore-text-link.png" width="644" height="822" alt="Search result with the variation count as a text link under the product image" loading="lazy" decoding="async" data-zoom></picture><figcaption>Count as a text link under the image</figcaption></figure>
+            <figure><picture><source type="image/webp" srcset="assets/case/vd/explore-pill-320.webp 320w, assets/case/vd/explore-pill-480.webp 480w, assets/case/vd/explore-pill-640.webp 640w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/explore-pill-640.webp" src="assets/case/vd/explore-pill.png" width="644" height="839" alt="Search result with the variation count as a pill button under the product image" loading="lazy" decoding="async" data-zoom></picture><figcaption>Count as a pill under the image</figcaption></figure>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/explore-fullscreen-320.webp 320w, assets/case/vd/explore-fullscreen-480.webp 480w, assets/case/vd/explore-fullscreen-612.webp 612w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/explore-fullscreen-612.webp" src="assets/case/vd/explore-fullscreen.png" width="612" height="1326" alt="Full-screen view with Variations and Value Picks" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Full-screen Variations + Value Picks</figcaption></figure>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/explore-sheet-tabs-320.webp 320w, assets/case/vd/explore-sheet-tabs-480.webp 480w, assets/case/vd/explore-sheet-tabs-612.webp 612w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/explore-sheet-tabs-612.webp" src="assets/case/vd/explore-sheet-tabs.png" width="612" height="1326" alt="Bottom sheet with Variations and Value Picks tabs" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Sheet with Variations / Value Picks tabs</figcaption></figure>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/explore-view-similar-320.webp 320w, assets/case/vd/explore-view-similar-480.webp 480w, assets/case/vd/explore-view-similar-614.webp 614w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/explore-view-similar-614.webp" src="assets/case/vd/explore-view-similar.png" width="614" height="1326" alt="Bottom sheet listing similar items" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Sheet of similar items</figcaption></figure>
+          </div>
+          <p class="kicker screens-caption" data-reveal>Explored directions — scroll →</p>
         </section>
 
         <!-- 04 -->
@@ -300,39 +155,11 @@
           <h2 id="h-solution" data-reveal>A signal on the result. A sheet for the choice.</h2>
           <p data-reveal>The Search result carries a small, explicit signal that other variations exist. Tapping it opens a focused bottom sheet to choose one — then continue to details or cart without losing your place in Search.</p>
 
-          <div class="proto" data-reveal>
-            <div class="proto-bar"><span class="kicker">Interactive prototype</span><span class="flag">Demo · generic styling</span></div>
-            <div class="proto-stage">
-              <div class="result">
-                <div class="thumb" aria-hidden="true">product image</div>
-                <div>
-                  <h4>Sample Shampoo, 33.8 fl oz</h4>
-                  <p class="price">$00.00</p>
-                  <button class="var-chip" type="button" aria-haspopup="dialog" aria-controls="sheet">4 sizes available <span aria-hidden="true">→</span></button>
-                  <p class="selected-line" aria-live="polite"></p>
-                </div>
-              </div>
-              <div class="backdrop" data-close></div>
-              <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
-                <div class="grab" aria-hidden="true"></div>
-                <div class="sheet-head"><h5 id="sheet-title">Choose a size</h5><button class="x" type="button" aria-label="Close" data-close>×</button></div>
-                <div class="opts" role="radiogroup" aria-label="Sizes">
-                  <button class="opt" type="button" role="radio" aria-checked="false"><b>3.4 fl oz</b><span>Travel</span></button>
-                  <button class="opt" type="button" role="radio" aria-checked="false"><b>10.14 fl oz</b><span>Regular</span></button>
-                  <button class="opt" type="button" role="radio" aria-checked="false"><b>16.9 fl oz</b><span>Large</span></button>
-                  <button class="opt selected" type="button" role="radio" aria-checked="true"><b>33.8 fl oz</b><span>Value</span></button>
-                </div>
-                <div class="sheet-actions">
-                  <button type="button" data-demo>View Details</button>
-                  <button type="button" class="primary" data-demo>Add to Cart</button>
-                </div>
-                <p class="demo-note" aria-live="polite"></p>
-              </div>
-            </div>
+          <div class="screens pair" data-reveal>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/final-mobile-search-320.webp 320w, assets/case/vd/final-mobile-search-480.webp 480w, assets/case/vd/final-mobile-search-600.webp 600w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/final-mobile-search-600.webp" src="assets/case/vd/final-mobile-search.png" width="600" height="1300" alt="Final mobile search results with the variation count on the result" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Mobile — the signal in Search</figcaption></figure>
+            <figure class="device"><div class="iphone"><span class="island" aria-hidden="true"></span><picture><source type="image/webp" srcset="assets/case/vd/final-mobile-sheet-320.webp 320w, assets/case/vd/final-mobile-sheet-480.webp 480w, assets/case/vd/final-mobile-sheet-600.webp 600w" sizes="(max-width: 640px) 68vw, 230px"><img data-full="assets/case/vd/final-mobile-sheet-600.webp" src="assets/case/vd/final-mobile-sheet.png" width="600" height="1300" alt="Final mobile bottom sheet for choosing flavour and size" loading="lazy" decoding="async" data-zoom></picture></div><figcaption>Mobile — the choice in a sheet</figcaption></figure>
           </div>
-
-          <div class="shot" data-reveal><span class="flag">[SCREENSHOT NEEDED — final design, mobile]</span></div>
-          <div class="shot" data-reveal><span class="flag">[SCREENSHOT NEEDED — final design, desktop]</span></div>
+          <p class="kicker screens-caption" data-reveal>Final design — launched</p>
         </section>
 
         <!-- 06 -->
@@ -348,7 +175,7 @@
             <span class="tag">Mobile + desktop</span>
             <span class="tag">Existing card constraints</span>
           </div>
-          <div class="shot tall" data-reveal><span class="flag">[SCREENSHOT NEEDED — cropped spec / redline]</span></div>
+          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/vd/redlines-640.webp 640w, assets/case/vd/redlines-960.webp 960w, assets/case/vd/redlines-1280.webp 1280w, assets/case/vd/redlines-1600.webp 1600w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/vd/redlines-1600.webp" src="assets/case/vd/redlines.png" width="1600" height="980" alt="Developer handover redlines for the variations bottom sheet, text swatches and action buttons" loading="lazy" decoding="async" data-zoom></picture><figcaption>Dev handover — sheet spacing, swatch states (default, selected, unavailable), truncation at 250px, and the action buttons.</figcaption></figure>
         </section>
 
         <!-- 07 -->
@@ -361,7 +188,7 @@
 
         <div class="next">
           <a href="./#work"><span aria-hidden="true">←</span> Back to selected work</a>
-          <span class="flag">Evidence / 02 — in preparation</span>
+          <a class="fwd" href="evidence-02.html">Next: Evidence / 02 <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </div>
@@ -370,87 +197,18 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>Project facts are real · Screenshots &amp; post-launch metric pending</p>
+    <p>Project facts are real · Post-launch metric pending</p>
     <p>© 2026 Chinnathambi Sundaram</p>
   </div>
 </footer>
 
-<script src="assets/site.js"></script>
-<script>
-(function(){
-  'use strict';
+<dialog class="lightbox" aria-label="Enlarged image">
+  <button class="x" type="button" aria-label="Close">×</button>
+  <img alt="">
+  <p></p>
+</dialog>
 
-  /* Reading progress hairline */
-  var bar = document.querySelector('.progress');
-  var ticking = false;
-  function progress(){
-    var h = document.documentElement.scrollHeight - innerHeight;
-    bar.style.setProperty('--p', h > 0 ? Math.min(1, scrollY / h) : 0);
-    ticking = false;
-  }
-  addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(progress); } }, {passive:true});
-  progress();
-
-  /* Sticky index — highlight the section in view */
-  if('IntersectionObserver' in window){
-    var links = {};
-    document.querySelectorAll('.toc a').forEach(function(a){ links[a.getAttribute('href').slice(1)] = a; });
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          Object.keys(links).forEach(function(k){ links[k].removeAttribute('aria-current'); });
-          links[e.target.id].setAttribute('aria-current','true');
-        }
-      });
-    }, {rootMargin:'-40% 0px -55% 0px'});
-    Object.keys(links).forEach(function(id){ io.observe(document.getElementById(id)); });
-  }
-
-  /* Prototype — bottom sheet */
-  var proto = document.querySelector('.proto');
-  var chip = proto.querySelector('.var-chip');
-  var sheet = proto.querySelector('.sheet');
-  var opts = [].slice.call(proto.querySelectorAll('.opt'));
-  var selLine = proto.querySelector('.selected-line');
-  var note = proto.querySelector('.demo-note');
-  var title = proto.querySelector('.result h4');
-
-  function open(){
-    proto.classList.add('is-open');
-    chip.setAttribute('aria-expanded','true');
-    setTimeout(function(){ (proto.querySelector('.opt.selected') || opts[0]).focus(); }, 60);
-  }
-  function close(){
-    proto.classList.remove('is-open');
-    chip.setAttribute('aria-expanded','false');
-    note.textContent = '';
-    chip.focus();
-  }
-  chip.addEventListener('click', open);
-  proto.querySelectorAll('[data-close]').forEach(function(el){ el.addEventListener('click', close); });
-  sheet.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){ e.preventDefault(); close(); return; }
-    if(e.key === 'Tab'){ // keep focus inside the sheet while it's open
-      var f = [].slice.call(sheet.querySelectorAll('button'));
-      var first = f[0], last = f[f.length-1];
-      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-    }
-  });
-  opts.forEach(function(o){
-    o.addEventListener('click', function(){
-      opts.forEach(function(x){ x.classList.remove('selected'); x.setAttribute('aria-checked','false'); });
-      o.classList.add('selected'); o.setAttribute('aria-checked','true');
-      var size = o.querySelector('b').textContent;
-      selLine.textContent = 'Selected: ' + size;
-      title.textContent = 'Sample Shampoo, ' + size;
-      note.textContent = '';
-    });
-  });
-  proto.querySelectorAll('[data-demo]').forEach(function(b){
-    b.addEventListener('click', function(){ note.textContent = '(demo only, not a real cart)'; });
-  });
-})();
-</script>
+<script src="assets/site.js?v=202610011040"></script>
+<script src="assets/case-study.js?v=202610011040"></script>
 </body>
 </html>

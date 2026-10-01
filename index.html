@@ -13,6 +13,12 @@
 <meta property="og:url" content="https://chinnathambis.github.io/">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Chinnathambi Sundaram","jobTitle":"Senior Product Designer",
+ "address":{"@type":"PostalAddress","addressLocality":"Bengaluru","addressCountry":"IN"},
+ "email":"mailto:chinnathambi.sundaram@gmail.com","url":"https://chinnathambis.github.io/",
+ "sameAs":["https://www.linkedin.com/in/chinnathambis"]}
+</script>
 <script>
   // Restore theme before first paint to avoid a flash.
   (function(){
@@ -23,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/base.css?v=202610011040">
 <style>
 /* ================= HERO ================= */
 .hero{
@@ -37,12 +43,12 @@
 .field{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .hero-content{position:relative;z-index:1;max-width:1160px;width:100%}
 .hero h1{
-  font-family:var(--serif);font-weight:350;
-  font-size:clamp(36px,7.4vw,104px);line-height:.98;letter-spacing:-.035em;
+  font-family:var(--serif);font-weight:420;
+  font-size:clamp(36px,7.2vw,100px);line-height:1.02;letter-spacing:-.02em;
   margin:28px 0 32px;
-  font-variation-settings:"opsz" 144;
+  font-variation-settings:"opsz" 96;
 }
-.hero h1 em{font-style:italic;color:var(--accent);font-weight:300}
+.hero h1 em{font-style:italic;color:var(--accent);font-weight:350}
 .hero h1 .line{display:block;overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
 .hero h1 .line > span{display:inline-block}
 @media (min-width:900px){.hero h1 .line > span{white-space:nowrap}}
@@ -115,7 +121,9 @@
 @media (max-height:640px){.scroll-cue{display:none}}
 
 /* ================= SELECTED WORK ================= */
-.sw-list{display:grid;gap:16px}
+.sw-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.sw-list > .sw-preview:first-child{grid-column:1 / -1}
+@media (max-width:760px){ .sw-list{grid-template-columns:minmax(0,1fr)} }
 .sw-preview{
   display:block;text-decoration:none;
   border:1px solid var(--line);border-radius:14px;background:var(--bg-raised);
@@ -130,8 +138,12 @@
   font-family:var(--serif);font-weight:350;
   font-size:clamp(28px,4.6vw,56px);line-height:1.04;letter-spacing:-.025em;
   margin:18px 0 22px;max-width:18ch;
-  view-transition-name:vd-title;
 }
+.sw-preview.sm{display:flex;flex-direction:column}
+.sw-preview.sm h3{font-size:clamp(24px,2.8vw,34px);max-width:14ch}
+.sw-preview.sm h3 em{font-style:italic;color:var(--accent)}
+.sw-preview.sm .sw-cta{margin-top:auto;padding-top:28px}
+.sw-status{display:inline-block;margin-left:8px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--brass);vertical-align:1px}
 .sw-meta{color:var(--ink-soft);font-size:15px;margin:0}
 .sw-cta{
   display:inline-flex;align-items:center;gap:10px;margin-top:28px;
@@ -139,12 +151,6 @@
 }
 .sw-cta span{display:inline-block;transition:transform var(--dur-med) var(--ease)}
 .sw-preview:hover .sw-cta span{transform:translateX(4px)}
-.sw-pending{
-  display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
-  border:1px dashed var(--line);border-radius:14px;padding:22px clamp(24px,4vw,48px);
-  color:var(--ink-soft);
-}
-.sw-pending .t{font-family:var(--serif);font-size:clamp(20px,2.4vw,26px);color:var(--ink-soft)}
 
 /* ================= AI LAB ================= */
 .lab-intro{max-width:620px;color:var(--ink-soft);margin:0 0 36px}
@@ -185,7 +191,7 @@
 .story-line{list-style:none;margin:0;padding:0;position:relative;max-width:760px}
 .story-line::before{content:"";position:absolute;left:5px;top:10px;bottom:10px;width:1px;background:var(--line)}
 .story-line::after{content:"";position:absolute;left:5px;top:10px;width:1px;height:var(--fill,0px);background:var(--accent);transition:height .6s var(--ease)}
-.node{position:relative;padding:0 0 clamp(36px,5vw,56px) 44px}
+.node{position:relative;padding:0 0 clamp(22px,2.6vw,30px) 44px}
 .node:last-child{padding-bottom:0}
 .node .dot{
   position:absolute;left:0;top:8px;width:11px;height:11px;border-radius:50%;
@@ -193,7 +199,7 @@
   transition:background-color var(--dur-med) var(--ease), border-color var(--dur-med) var(--ease), transform var(--dur-med) var(--ease);
 }
 .node .year{font-family:var(--mono);font-size:13px;color:var(--ink-soft);letter-spacing:.04em;transition:color var(--dur-med) var(--ease)}
-.node .role{font-family:var(--serif);font-size:clamp(24px,3.2vw,36px);line-height:1.15;letter-spacing:-.015em;margin:4px 0 2px;color:var(--ink-soft);transition:color var(--dur-med) var(--ease)}
+.node .role{font-family:var(--serif);font-size:clamp(20px,2.1vw,26px);line-height:1.2;letter-spacing:-.01em;margin:2px 0 1px;color:var(--ink-soft);transition:color var(--dur-med) var(--ease)}
 .node .org{color:var(--ink-soft);margin:0}
 .node.is-active .dot{background:var(--accent);border-color:var(--accent);transform:scale(1.15)}
 .node.is-active .role{color:var(--ink)}
@@ -214,7 +220,7 @@
           <li class="nav-section"><a href="#lab">AI Lab</a></li>
           <li class="nav-section"><a href="#story">Story</a></li>
           <li class="sep" aria-hidden="true"></li>
-          <li><a href="#resume" data-placeholder="Résumé PDF — to be added">Résumé</a></li>
+          <li><a href="#resume" data-placeholder="Resume PDF — to be added">Resume</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -258,7 +264,7 @@
   </section>
 
   <!-- ================= SELECTED WORK ================= -->
-  <section class="section" id="work" aria-labelledby="work-title">
+  <section class="section band" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2 id="work-title">Selected work</h2>
@@ -267,18 +273,22 @@
       <div class="sw-list">
         <a class="sw-preview" href="variations-discovery.html" data-reveal>
           <span class="kicker">Evidence / 01 · Amazon</span>
-          <h3>The product was easy to find. The right variant wasn’t.</h3>
+          <h3 style="view-transition-name:vd-title">The product was easy to find. The right variant wasn’t.</h3>
           <p class="sw-meta">Lead UX/UI Designer · 6 months · Launched to production</p>
           <span class="sw-cta">Explore project <span aria-hidden="true">→</span></span>
         </a>
-        <div class="sw-pending" data-reveal style="--d:80ms">
-          <span class="t">Evidence / 02</span>
-          <span class="flag">[CASE STUDY IN PREPARATION]</span>
-        </div>
-        <div class="sw-pending" data-reveal style="--d:140ms">
-          <span class="t">Evidence / 03</span>
-          <span class="flag">[CASE STUDY IN PREPARATION]</span>
-        </div>
+        <a class="sw-preview sm" href="evidence-02.html" data-reveal style="--d:80ms">
+          <span class="kicker">Evidence / 02 <span class="sw-status">In preparation</span></span>
+          <h3 style="view-transition-name:ev02-title">Case study <em>in preparation.</em></h3>
+          <p class="sw-meta flag">[ROLE · DURATION · STATUS — TO BE CONFIRMED]</p>
+          <span class="sw-cta">Preview structure <span aria-hidden="true">→</span></span>
+        </a>
+        <a class="sw-preview sm" href="evidence-03.html" data-reveal style="--d:140ms">
+          <span class="kicker">Evidence / 03 <span class="sw-status">In preparation</span></span>
+          <h3 style="view-transition-name:ev03-title">Case study <em>in preparation.</em></h3>
+          <p class="sw-meta flag">[ROLE · DURATION · STATUS — TO BE CONFIRMED]</p>
+          <span class="sw-cta">Preview structure <span aria-hidden="true">→</span></span>
+        </a>
       </div>
     </div>
   </section>
@@ -320,7 +330,7 @@
   </section>
 
   <!-- ================= STORY ================= -->
-  <section class="section" id="story" aria-labelledby="story-title">
+  <section class="section band" id="story" aria-labelledby="story-title">
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2 id="story-title">Story</h2>
@@ -343,9 +353,9 @@
       <p class="eyebrow" data-reveal>Contact</p>
       <h2 id="contact-title" data-reveal>Let’s talk about a <em>decision</em> worth designing.</h2>
       <ul class="contact-list" data-reveal>
-        <li><span class="label">Email</span><a href="#contact" data-placeholder="Email address — to be added" class="flag">[EMAIL — TO BE CONFIRMED]</a></li>
-        <li><span class="label">LinkedIn</span><a href="#contact" data-placeholder="LinkedIn profile — to be added" class="flag">[LINKEDIN — TO BE CONFIRMED]</a></li>
-        <li><span class="label">Résumé</span><a href="#contact" data-placeholder="Résumé PDF — to be added" class="flag">[RÉSUMÉ PDF — TO BE ADDED]</a></li>
+        <li><span class="label">Email</span><a class="contact-link" href="mailto:chinnathambi.sundaram@gmail.com">chinnathambi.sundaram@gmail.com <span aria-hidden="true">↗</span></a></li>
+        <li><span class="label">LinkedIn</span><a class="contact-link" href="https://www.linkedin.com/in/chinnathambis" target="_blank" rel="noopener">linkedin.com/in/chinnathambis <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        <li><span class="label">Resume</span><a href="#contact" data-placeholder="Resume PDF — to be added" class="flag">[RESUME PDF — TO BE ADDED]</a></li>
       </ul>
     </div>
   </section>
@@ -358,7 +368,7 @@
   </div>
 </footer>
 
-<script src="assets/site.js"></script>
+<script src="assets/site.js?v=202610011040"></script>
 <script>
 (function(){
   'use strict';
@@ -538,15 +548,20 @@
      ========================================================= */
   (function(){
     if(reduceMotion || coarse) return;
-    var card = document.querySelector('.sw-preview');
-    if(!card) return;
     var MAX = 2.5;
-    card.addEventListener('mousemove', function(e){
-      var r = card.getBoundingClientRect();
-      var px = (e.clientX - r.left)/r.width - .5, py = (e.clientY - r.top)/r.height - .5;
-      card.style.transform = 'perspective(1200px) rotateX('+(-py*MAX*2).toFixed(2)+'deg) rotateY('+(px*MAX*2).toFixed(2)+'deg)';
+    document.querySelectorAll('.sw-preview').forEach(function(card){
+      // The scroll-reveal transition is 900ms; override it while tilting so the card tracks the cursor.
+      card.addEventListener('mouseenter', function(){ card.style.transition = 'transform 140ms var(--ease), border-color var(--dur-med) var(--ease)'; });
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left)/r.width - .5, py = (e.clientY - r.top)/r.height - .5;
+        card.style.transform = 'perspective(1200px) rotateX('+(-py*MAX*2).toFixed(2)+'deg) rotateY('+(px*MAX*2).toFixed(2)+'deg)';
+      });
+      card.addEventListener('mouseleave', function(){
+        card.style.transition = 'transform 480ms var(--ease-out-expo), border-color var(--dur-med) var(--ease)';
+        card.style.transform = '';
+      });
     });
-    card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
   })();
 
   /* =========================================================

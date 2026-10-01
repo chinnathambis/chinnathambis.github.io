@@ -26,3 +26,7 @@ Thumbs.db
 
 # Local tooling
 .claude/
+
+# Source exports (web-ready copies live in assets/case/)
+assets/raw/
+assets/case/_src/
