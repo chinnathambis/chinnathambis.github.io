@@ -10,6 +10,7 @@
   font-size:clamp(40px,7.4vw,96px);line-height:1;letter-spacing:-.035em;
   margin:24px 0 0;max-width:16ch;
 }
+.cs-intro h1.long{font-size:clamp(32px,4.6vw,60px);line-height:1.06;letter-spacing:-.025em;max-width:24ch}
 .cs-intro h1 em{font-style:italic;color:var(--accent);font-weight:300}
 .cs-lede{max-width:620px;color:var(--ink-soft);font-size:clamp(17px,1.7vw,19px);margin:32px 0 0}
 .meta{
@@ -189,3 +190,124 @@ figcaption{margin-top:10px;font-family:var(--mono);font-size:12px;line-height:1.
 /* The exploration exports have a soft white edge (~6px); zoom just enough to push it off-screen */
 .screens .iphone img[src*="/explore-"]{transform:scale(1.035)}
 .device figcaption{margin-top:14px}
+
+/* =====================================================================
+   Long-form case study components (first used by Evidence 02 · QNB)
+   ===================================================================== */
+
+/* Meta — six items in a 3 × 2 grid */
+.meta.six{grid-template-columns:repeat(3,1fr)}
+.meta.six div + div{padding-left:20px;border-left:1px solid var(--line)}
+.meta.six div:nth-child(3n+1){padding-left:0;border-left:0}
+.meta.six div:nth-child(n+4){border-top:1px solid var(--line)}
+@media (max-width:760px){
+  .meta.six{grid-template-columns:1fr 1fr}
+  .meta.six div:nth-child(n){padding-left:20px;border-left:1px solid var(--line);border-top:0}
+  .meta.six div:nth-child(odd){padding-left:0;border-left:0}
+  .meta.six div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+
+/* Sub-heading inside a section */
+.sub{display:block;margin:40px 0 12px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.cs-sec .sub:first-child{margin-top:0}
+.note{margin:20px 0;padding:2px 0 2px 16px;border-left:1px solid var(--brass);font-size:14px;line-height:1.6;color:var(--ink-soft)}
+.cs-sec .note p{margin:0}
+
+/* Image placeholders — replace the whole .ph element with a <picture> when the export exists */
+.ph{
+  position:relative;margin:24px 0;aspect-ratio:var(--ar,16/9);
+  display:grid;place-items:center;text-align:center;padding:clamp(14px,3vw,32px);overflow:hidden;
+  border:1px dashed var(--line);border-radius:14px;
+  background:color-mix(in srgb, var(--bg-raised) 70%, transparent);
+}
+.ph-inner{max-width:48ch}
+.ph-id{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--brass)}
+.ph-title{display:block;margin:8px 0 6px;font-family:var(--serif);font-size:clamp(17px,2vw,22px);line-height:1.25;color:var(--ink)}
+.cs-sec .ph-note,.ph-note{margin:0;font-size:13px;line-height:1.5;color:var(--ink-soft)}
+.ph.sm .ph-title{font-size:15px}
+.ph.sm .ph-note{font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));gap:12px;margin:24px 0}
+.grid > .ph,.grid > figure > .ph{margin:0}
+.grid-caption{margin:-12px 0 24px;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--ink-soft)}
+/* Phones: grids become a swipeable row instead of a long stack */
+@media (max-width:640px){
+  .grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:82%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+  .grid > *{scroll-snap-align:start}
+}
+
+/* Empty phone screen inside the iPhone frame */
+.iphone .ph-screen{
+  aspect-ratio:9 / 19.5;border-radius:12% / 5.6%;display:grid;place-items:center;text-align:center;
+  padding:22% 10% 10%;background:var(--bg-raised);
+}
+.iphone .ph-screen .ph-id{font-size:10px}
+.iphone .ph-screen .ph-title{font-size:14px;margin:6px 0 0}
+
+/* Browser frame for internet-banking screens */
+.browser{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--bg-raised)}
+.browser-bar{display:flex;gap:6px;padding:9px 12px;border-bottom:1px solid var(--line)}
+.browser-bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.browser .ph{margin:0;border:0;border-radius:0;--ar:16 / 10}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(var(--cols,3),minmax(0,1fr));gap:12px;margin:24px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:18px 18px 20px;background:var(--bg-raised)}
+.card .n{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent)}
+.card h3{margin:8px 0 6px;font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.25;letter-spacing:-.005em}
+.cs-sec .card p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-soft)}
+.card ul{margin:10px 0 0;padding-left:18px;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+.card li + li{margin-top:4px}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.card.pending{border-style:dashed;background:transparent}
+@media (max-width:900px){ .cards{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:640px){
+  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:84%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}
+  .cards > *{scroll-snap-align:start}
+}
+
+/* Definition grid */
+.defs{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;margin:16px 0 8px}
+.defs div{padding:16px 0;border-top:1px solid var(--line)}
+.defs dt{font-family:var(--serif);font-size:19px;line-height:1.3}
+.defs dd{margin:4px 0 0;font-size:15px;line-height:1.55;color:var(--ink-soft)}
+@media (max-width:640px){ .defs{grid-template-columns:1fr} }
+
+/* Observation → opportunity → principle */
+.flow{display:grid;gap:10px;margin:24px 0}
+.flow-head,.flow-row{display:grid;grid-template-columns:1fr 20px 1fr 20px 1fr;gap:8px;align-items:stretch}
+.flow-head span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.flow-row > div{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.45;background:var(--bg-raised)}
+.flow-row > .arr{display:grid;place-items:center;border:0;padding:0;background:none;color:var(--ink-soft)}
+.flow-row > .tbc{border-style:dashed;background:transparent}
+@media (max-width:640px){
+  .flow-head{display:none}
+  .flow-row{grid-template-columns:1fr;gap:6px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+  .flow-row > .arr{display:none}
+  .flow-row > div[data-label]::before{content:attr(data-label);display:block;margin-bottom:4px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+}
+
+/* Segment × theme matrix */
+.matrix{width:100%;border-collapse:collapse;margin:12px 0 24px;font-size:15px}
+.matrix th,.matrix td{text-align:left;padding:12px 10px 12px 0;border-bottom:1px solid var(--line)}
+.matrix thead th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:400;color:var(--ink-soft)}
+.matrix tbody th{font-family:var(--serif);font-weight:400;font-size:18px}
+.matrix .y{color:var(--ink)}
+.matrix .no{color:var(--ink-soft)}
+.matrix .future{color:var(--brass)}
+
+/* Outcome checklist */
+.checks{list-style:none;margin:16px 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.checks li{position:relative;padding:12px 0 12px 28px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5}
+.checks li::before{content:"✓";position:absolute;left:0;top:12px;color:var(--accent)}
+.checks li.future::before{content:"○";color:var(--brass)}
+@media (max-width:640px){ .checks{grid-template-columns:1fr} }
+
+/* Before / after pairs */
+.ba{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,68%);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px;margin:24px 0}
+.ba > .card{scroll-snap-align:start}
+.ba-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.ba-pair figcaption{margin-top:8px;text-align:center}
+@media (max-width:640px){ .ba{grid-auto-columns:86%} }
+
+.cs-sec .closing{margin:40px 0 0;font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);line-height:1.15;letter-spacing:-.02em}
+.cs-sec .closing em{font-style:italic;color:var(--accent)}
