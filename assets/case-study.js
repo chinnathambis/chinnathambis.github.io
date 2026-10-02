@@ -64,6 +64,40 @@
     items.forEach(function(it){ var g = it.b.closest('.stats'); if(groups.indexOf(g) < 0){ groups.push(g); io.observe(g); } });
   })();
 
+  /* Prototype recordings — play while on screen, pause when scrolled away; tap to pause / resume.
+     With reduced motion, nothing plays until the viewer presses play. */
+  (function(){
+    var wraps = [].slice.call(document.querySelectorAll('.iphone-video'));
+    if(!wraps.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var icon = '<svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3 1.5v13l11-6.5z"/></svg>';
+    wraps.forEach(function(w){
+      var v = w.querySelector('video');
+      var btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'play'; btn.innerHTML = icon;
+      btn.setAttribute('aria-label', 'Play ' + (v.getAttribute('aria-label') || 'recording'));
+      w.appendChild(btn);
+      v.addEventListener('play', function(){ w.classList.add('is-playing'); });
+      v.addEventListener('pause', function(){ w.classList.remove('is-playing'); });
+      function play(){ var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+      btn.addEventListener('click', function(){ w.dataset.paused = ''; play(); });
+      v.addEventListener('click', function(){ if(v.paused){ w.dataset.paused = ''; play(); } else { w.dataset.paused = '1'; v.pause(); } });
+    });
+    if(reduce || !('IntersectionObserver' in window)) return;
+    var inView = [];
+    function autoplay(w){ if(w.dataset.paused !== '1'){ var p = w.querySelector('video').play(); if(p && p.catch) p.catch(function(){}); } }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var w = e.target, v = w.querySelector('video'), i = inView.indexOf(w);
+        if(e.isIntersecting && e.intersectionRatio >= 0.6){ if(i < 0) inView.push(w); autoplay(w); }
+        else { if(i > -1) inView.splice(i, 1); if(!v.paused) v.pause(); }
+      });
+    }, {threshold:[0, 0.6]});
+    wraps.forEach(function(w){ io.observe(w); });
+    /* Browsers refuse to start video in a hidden tab — retry when the tab comes back */
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) inView.forEach(autoplay); });
+  })();
+
   /* Lightbox — click any figure image to enlarge */
   var lb = document.querySelector('.lightbox');
   if(lb && lb.showModal){
