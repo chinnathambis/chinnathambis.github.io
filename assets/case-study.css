@@ -321,3 +321,20 @@ figcaption{margin-top:10px;font-family:var(--mono);font-size:12px;line-height:1.
 
 .cs-sec .closing{margin:40px 0 0;font-family:var(--serif);font-size:clamp(26px,3.6vw,40px);line-height:1.15;letter-spacing:-.02em}
 .cs-sec .closing em{font-style:italic;color:var(--accent)}
+
+/* Evidence 02 cover — rendered on the card surface (--bg-raised) of each theme, framed like .card */
+.qnb-cover{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.qnb-cover img{display:block;width:100%;height:auto}
+.qnb-cover .theme-light,:root[data-theme="light"] .qnb-cover .theme-dark{display:none}
+:root[data-theme="light"] .qnb-cover .theme-light{display:block}
+
+/* Evidence 02 — benchmark review themes (Image 04) */
+.reviews-wrap{margin:24px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--bg-raised);overflow-x:auto}
+.reviews{width:100%;min-width:640px;border-collapse:collapse;font-size:14px;line-height:1.5}
+.reviews th,.reviews td{padding:14px 16px;text-align:left;vertical-align:top}
+.reviews thead th{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+.reviews tbody th{font-family:var(--serif);font-weight:400;font-size:16px;color:var(--ink);white-space:nowrap}
+.reviews td{color:var(--ink-soft)}
+.reviews tbody tr + tr > *{border-top:1px solid var(--line)}
+.reviews tbody tr.is-client > *{background:color-mix(in srgb, var(--accent) 7%, transparent)}
+.cs-sec .reviews-insight{margin:28px 0 0;max-width:620px;font-family:var(--serif);font-size:clamp(19px,2.2vw,23px);line-height:1.35;letter-spacing:-.01em}
