@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/base.css?v=202610011604">
+<link rel="stylesheet" href="assets/base.css?v=202610132108">
 <style>
 /* ================= HERO ================= */
 .hero{
@@ -133,6 +133,10 @@
   will-change:transform;
 }
 .sw-preview:hover{border-color:var(--ink-soft)}
+.sw-preview.locked{cursor:default;opacity:.62}
+.sw-preview.locked:hover{border-color:var(--line)}
+.sw-preview.locked .sw-status{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.sw-status .lock{flex:none}
 .sw-preview:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:14px}
 .sw-preview h3{
   font-family:var(--serif);font-weight:350;
@@ -152,40 +156,39 @@
 .sw-cta span{display:inline-block;transition:transform var(--dur-med) var(--ease)}
 .sw-preview:hover .sw-cta span{transform:translateX(4px)}
 
-/* ================= AI LAB ================= */
-.lab-intro{max-width:620px;color:var(--ink-soft);margin:0 0 36px}
+/* ================= AI LAB — the loop ================= */
+.lab-intro{max-width:620px;color:var(--ink-soft);margin:0 0 48px}
 .lab-intro strong{color:var(--ink);font-weight:500}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:0;overflow-x:auto}
-.tab{
-  position:relative;background:transparent;border:0;cursor:pointer;
-  padding:14px 18px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--ink-soft);
-  transition:color var(--dur-fast) var(--ease);white-space:nowrap;
-}
-.tab::after{
-  content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:1px;background:var(--accent);
-  transform:scaleX(0);transition:transform var(--dur-med) var(--ease);
-}
-.tab:hover{color:var(--ink)}
-.tab[aria-selected="true"]{color:var(--ink)}
-.tab[aria-selected="true"]::after{transform:scaleX(1)}
-.panel{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
-.panel[hidden]{display:none}
-.panel.is-entering{animation:panelIn var(--dur-med) var(--ease) both}
-@keyframes panelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.step{padding:32px 28px 36px 0;position:relative}
-.step + .step{padding-left:28px;border-left:1px solid var(--line)}
-.step .kicker{display:flex;align-items:center;gap:10px}
-.step .kicker b{font-weight:500;color:var(--ink)}
-.step.decision .kicker b{color:var(--accent)}
-.step p{margin:14px 0 0;font-size:16px}
-.step.decision p{font-family:var(--serif);font-size:clamp(20px,2vw,24px);line-height:1.3;letter-spacing:-.01em}
-.step .arrow{color:var(--ink-soft)}
+.loop{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
+.loop::before{content:"";position:absolute;left:12px;right:12px;top:15px;height:1px;background:var(--line)}
+.loop-step{position:relative;padding-right:24px}
+.loop-dot{position:relative;z-index:1;width:31px;height:31px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:500;background:var(--bg);border:1px solid var(--ink);color:var(--ink)}
+.loop-step.ai .loop-dot{border-style:dashed;border-color:var(--ink-soft);color:var(--ink-soft)}
+.loop-step.decide .loop-dot{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.loop-who{display:block;margin:22px 0 10px;font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink)}
+.loop-step.ai .loop-who{color:var(--ink-soft)}
+.loop-step.decide .loop-who{color:var(--accent)}
+.loop-step h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,30px);line-height:1.1;letter-spacing:-.015em;margin:0}
+.loop-step.decide h3{color:var(--accent)}
+.loop-step p{color:var(--ink-soft);font-size:16px;margin:10px 0 0;max-width:250px}
+.loop-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.loop-tools span{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border:1px solid var(--line);border-radius:999px;color:var(--ink-soft);white-space:nowrap}
+.lab-proof{margin:56px 0 0;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;background:var(--bg-raised);border:1px solid var(--line);border-radius:14px;padding:26px 30px}
+.lab-proof .src{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);line-height:1.5}
+.lab-proof .src b{display:block;font-family:var(--serif);font-size:22px;font-weight:400;letter-spacing:-.01em;text-transform:none;color:var(--ink);margin-top:6px}
+.lab-proof blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(18px,1.8vw,21px);line-height:1.4;letter-spacing:-.005em}
+.lab-proof a{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--accent);text-decoration:none;white-space:nowrap}
+.lab-proof a:hover{text-decoration:underline;text-underline-offset:3px}
 @media (max-width:760px){
-  .panel{grid-template-columns:1fr}
-  .step,.step + .step{padding:24px 0;border-left:0}
-  .step + .step{border-top:1px solid var(--line)}
+  .loop{grid-template-columns:1fr}
+  .loop::before{left:15px;right:auto;top:16px;bottom:40px;width:1px;height:auto}
+  .loop-step{display:grid;grid-template-columns:31px 1fr;column-gap:18px;padding:0 0 30px}
+  .loop-dot{grid-row:1 / span 4}
+  .loop-step > :not(.loop-dot){grid-column:2}
+  .loop-who{margin:6px 0}
+  .loop-step p{max-width:none}
+  .lab-proof{grid-template-columns:1fr;gap:14px;padding:22px}
 }
-.lab-note{margin-top:18px}
 
 /* ================= STORY ================= */
 .story-line{list-style:none;margin:0;padding:0;position:relative;max-width:760px}
@@ -268,27 +271,28 @@
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2 id="work-title">Selected work</h2>
-        <span class="kicker">01 published · 02 in preparation · 10+ years</span>
+        <span class="kicker">02 published · 01 in preparation · 10+ years</span>
       </div>
       <div class="sw-list">
-        <a class="sw-preview" href="variations-discovery.html" data-reveal>
-          <span class="kicker">Evidence / 01 · Amazon</span>
-          <h3 style="view-transition-name:vd-title">The product was easy to find. The right variant wasn’t.</h3>
-          <p class="sw-meta">Lead UX/UI Designer · 6 months · Launched to production</p>
-          <span class="sw-cta">Explore project <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="sw-preview sm" href="evidence-02.html" data-reveal style="--d:80ms">
-          <span class="kicker">Evidence / 02 · QNB Egypt <span class="sw-status">In progress</span></span>
+        <a class="sw-preview" href="evidence-02.html" data-reveal>
+          <span class="kicker">Evidence / 01 · QNB Egypt</span>
           <h3 style="view-transition-name:ev02-title">Reimagining QNB Egypt’s digital banking <em>experience.</em></h3>
           <p class="sw-meta">Design Lead · ~18 months · Mobile &amp; internet banking · Design system</p>
           <span class="sw-cta">Explore project <span aria-hidden="true">→</span></span>
         </a>
-        <a class="sw-preview sm" href="evidence-03.html" data-reveal style="--d:140ms">
-          <span class="kicker">Evidence / 03 <span class="sw-status">In preparation</span></span>
-          <h3 style="view-transition-name:ev03-title">Case study <em>in preparation.</em></h3>
-          <p class="sw-meta flag">[ROLE · DURATION · STATUS — TO BE CONFIRMED]</p>
-          <span class="sw-cta">Preview structure <span aria-hidden="true">→</span></span>
+        <a class="sw-preview sm" href="variations-discovery.html" data-reveal style="--d:80ms">
+          <span class="kicker">Evidence / 02 · Amazon</span>
+          <h3 style="view-transition-name:vd-title">The product was easy to find. The right variant wasn’t.</h3>
+          <p class="sw-meta">Lead UX/UI Designer · 6 months · Launched to production</p>
+          <span class="sw-cta">Explore project <span aria-hidden="true">→</span></span>
         </a>
+        <!-- locked 2026-10-13 until the case study is prepared; was <a href="evidence-03.html"> -->
+        <div class="sw-preview sm locked" aria-disabled="true" data-reveal style="--d:140ms">
+          <span class="kicker">Evidence / 03 <span class="sw-status"><svg class="lock" aria-hidden="true" width="11" height="12" viewBox="0 0 11 12" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="5.2" width="9" height="6" rx="1.5"/><path d="M3 5.2V3.6a2.5 2.5 0 0 1 5 0v1.6"/></svg> Locked</span></span>
+          <h3>Case study <em>in preparation.</em></h3>
+          <p class="sw-meta">Coming soon</p>
+          <span class="sw-cta">Not yet available</span>
+        </div>
       </div>
     </div>
   </section>
@@ -298,34 +302,23 @@
     <div class="wrap">
       <div class="section-head" data-reveal>
         <h2 id="lab-title">AI × Design Lab</h2>
-        <span class="kicker">Prompt → generate → evaluate → decide</span>
+        <span class="kicker">One loop · who leads each step</span>
       </div>
-      <p class="lab-intro" data-reveal>AI widens the option space. <strong>The decision stays with the designer.</strong> Three places where that split shows up in my work:</p>
+      <p class="lab-intro" data-reveal>AI widens the option space. <strong>The decision stays with the designer.</strong> The loop I run on every project:</p>
 
-      <div data-reveal>
-        <div class="tabs" role="tablist" aria-label="AI Lab stages">
-          <button class="tab" role="tab" id="tab-research" aria-controls="panel-research" aria-selected="true">01 Research</button>
-          <button class="tab" role="tab" id="tab-proto" aria-controls="panel-proto" aria-selected="false" tabindex="-1">02 Prototyping</button>
-          <button class="tab" role="tab" id="tab-critique" aria-controls="panel-critique" aria-selected="false" tabindex="-1">03 Critique</button>
-        </div>
+      <ol class="loop" data-reveal>
+        <li class="loop-step"><span class="loop-dot" aria-hidden="true">01</span><span class="loop-who">Designer leads</span><h3>Prompt</h3><p>Frame the problem: the user, the constraint, the outcome that matters.</p></li>
+        <li class="loop-step ai"><span class="loop-dot" aria-hidden="true">02</span><span class="loop-who">AI leads</span><h3>Generate</h3><p>Options at volume: layouts, microcopy, translations, imagery.</p>
+          <div class="loop-tools" aria-label="Tools"><span>Figma AI</span><span>Plugins</span><span>ChatGPT</span></div></li>
+        <li class="loop-step"><span class="loop-dot" aria-hidden="true">03</span><span class="loop-who">Both</span><h3>Evaluate</h3><p>AI flags gaps in journeys and copy; I test each option against data, edge cases and the system.</p></li>
+        <li class="loop-step decide"><span class="loop-dot" aria-hidden="true">04</span><span class="loop-who">Designer decides</span><h3>Decide</h3><p>One direction, with the rejected ones kept as evidence of why.</p></li>
+      </ol>
 
-        <div class="panel" role="tabpanel" id="panel-research" aria-labelledby="tab-research" tabindex="0">
-          <div class="step"><span class="kicker"><b>AI</b><span class="arrow">→</span></span><p>Synthesises interview transcripts into candidate themes — fast, and at a volume I couldn’t match by hand.</p></div>
-          <div class="step"><span class="kicker"><b>Human</b><span class="arrow">→</span></span><p>Discards the themes that are true but useless. Chases the contradictions the summary smoothed over.</p></div>
-          <div class="step decision"><span class="kicker"><b>Decision</b></span><p>Comes from the friction between the two — not from either one alone.</p></div>
-        </div>
-        <div class="panel" role="tabpanel" id="panel-proto" aria-labelledby="tab-proto" tabindex="0" hidden>
-          <div class="step"><span class="kicker"><b>AI</b><span class="arrow">→</span></span><p>Generates many variations of a flow or component quickly — more directions than I’d sketch in the same time.</p></div>
-          <div class="step"><span class="kicker"><b>Human</b><span class="arrow">→</span></span><p>Tests each against the real constraints: the data, the edge cases, the system it has to live inside.</p></div>
-          <div class="step decision"><span class="kicker"><b>Decision</b></span><p>One direction — with the rejected ones kept as evidence of why.</p></div>
-        </div>
-        <div class="panel" role="tabpanel" id="panel-critique" aria-labelledby="tab-critique" tabindex="0" hidden>
-          <div class="step"><span class="kicker"><b>AI</b><span class="arrow">→</span></span><p>Acts as a tireless first reviewer — flags inconsistencies, missing states, accessibility gaps.</p></div>
-          <div class="step"><span class="kicker"><b>Human</b><span class="arrow">→</span></span><p>Decides which critique matters for this user in this moment, and which is noise.</p></div>
-          <div class="step decision"><span class="kicker"><b>Decision</b></span><p>A design that has been argued with before anyone else sees it.</p></div>
-        </div>
-      </div>
-      <p class="flag lab-note" data-reveal>[NEEDS CONFIRMATION — project-specific examples for each stage to be added]</p>
+      <figure class="lab-proof" data-reveal>
+        <figcaption class="src">From the work<b>QNB Egypt</b></figcaption>
+        <blockquote>“These tools complemented the team’s expertise — final design decisions, quality and validation stayed with the team.”</blockquote>
+        <a href="evidence-02.html#leadership">Read the case study <span aria-hidden="true">→</span></a>
+      </figure>
     </div>
   </section>
 
@@ -363,12 +356,12 @@
 
 <footer class="site-footer">
   <div class="wrap">
-    <p>Profile data is real · One case study published · Two in preparation</p>
+    <p>Profile data is real · Two case studies published · One in preparation</p>
     <p>© 2026 Chinnathambi Sundaram</p>
   </div>
 </footer>
 
-<script src="assets/site.js?v=202610011604"></script>
+<script src="assets/site.js?v=202610132108"></script>
 <script>
 (function(){
   'use strict';
@@ -549,7 +542,7 @@
   (function(){
     if(reduceMotion || coarse) return;
     var MAX = 2.5;
-    document.querySelectorAll('.sw-preview').forEach(function(card){
+    document.querySelectorAll('.sw-preview:not(.locked)').forEach(function(card){
       // The scroll-reveal transition is 900ms; override it while tilting so the card tracks the cursor.
       card.addEventListener('mouseenter', function(){ card.style.transition = 'transform 140ms var(--ease), border-color var(--dur-med) var(--ease)'; });
       card.addEventListener('mousemove', function(e){
@@ -564,34 +557,7 @@
     });
   })();
 
-  /* =========================================================
-     AI LAB — accessible tabs with restrained panel transition
-     ========================================================= */
-  (function(){
-    var tabs = [].slice.call(document.querySelectorAll('.tab'));
-    function select(tab, focus){
-      tabs.forEach(function(t){
-        var on = t === tab;
-        t.setAttribute('aria-selected', on);
-        t.tabIndex = on ? 0 : -1;
-        var p = document.getElementById(t.getAttribute('aria-controls'));
-        p.hidden = !on;
-        if(on){ p.classList.remove('is-entering'); void p.offsetWidth; p.classList.add('is-entering'); }
-      });
-      if(focus) tab.focus();
-    }
-    tabs.forEach(function(t, i){
-      t.addEventListener('click', function(){ select(t); });
-      t.addEventListener('keydown', function(e){
-        var k = e.key, n = null;
-        if(k === 'ArrowRight') n = tabs[(i+1)%tabs.length];
-        if(k === 'ArrowLeft') n = tabs[(i-1+tabs.length)%tabs.length];
-        if(k === 'Home') n = tabs[0];
-        if(k === 'End') n = tabs[tabs.length-1];
-        if(n){ e.preventDefault(); select(n, true); }
-      });
-    });
-  })();
+
 
   /* =========================================================
      STORY — nodes activate as they scroll into view

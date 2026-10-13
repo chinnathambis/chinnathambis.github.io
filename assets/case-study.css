@@ -186,7 +186,7 @@ figcaption{margin-top:10px;font-family:var(--mono);font-size:12px;line-height:1.
   width:30%;aspect-ratio:3.3 / 1;border-radius:999px;background:#000;
 }
 .iphone picture{display:block;border-radius:12% / 5.6%;overflow:hidden;background:#fff}
-.screens .iphone img{border:0;border-radius:0;display:block;width:100%;height:auto}
+.screens .iphone img,.ba-pair .iphone img{border:0;border-radius:0;display:block;width:100%;height:auto}
 /* The exploration exports have a soft white edge (~6px); zoom just enough to push it off-screen */
 .screens .iphone img[src*="/explore-"]{transform:scale(1.035)}
 .device figcaption{margin-top:14px}
@@ -338,3 +338,45 @@ figcaption{margin-top:10px;font-family:var(--mono);font-size:12px;line-height:1.
 .reviews tbody tr + tr > *{border-top:1px solid var(--line)}
 .reviews tbody tr.is-client > *{background:color-mix(in srgb, var(--accent) 7%, transparent)}
 .cs-sec .reviews-insight{margin:28px 0 0;max-width:620px;font-family:var(--serif);font-size:clamp(19px,2.2vw,23px);line-height:1.35;letter-spacing:-.01em}
+
+/* Evidence 02 — observation → principle, compact list */
+.principles{list-style:none;margin:20px 0 0;padding:0;border-top:1px solid var(--line)}
+.principles li{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.principles .n{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.cs-sec .principles p{margin:0}
+.cs-sec .principles .p{font-family:var(--serif);font-size:clamp(18px,2vw,21px);line-height:1.35;letter-spacing:-.01em;color:var(--ink-soft)}
+.principles .p strong{font-weight:500;color:var(--ink)}
+.cs-sec .principles .from{margin-top:6px;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--ink-soft)}
+.screens .fig{margin:0}
+
+/* Glimpse — cropped preview of a large board; tap opens the full image */
+.glimpse{position:relative;aspect-ratio:16/7;overflow:hidden;border-radius:10px;border:1px solid var(--line);background:#fff}
+.fig .glimpse img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;border:0;border-radius:0}
+.glimpse::after{content:"";position:absolute;left:0;right:0;bottom:0;height:50%;background:linear-gradient(to bottom,transparent,color-mix(in srgb,var(--bg) 92%,transparent));pointer-events:none}
+.glimpse .more{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);z-index:1;font-family:var(--mono);font-size:12px;padding:7px 14px;border-radius:999px;background:var(--bg-raised);border:1px solid var(--line);color:var(--ink);white-space:nowrap;pointer-events:none}
+.fig:has(.glimpse) figcaption::after{content:""}
+@media (max-width:640px){ .glimpse{aspect-ratio:4/3} }
+
+/* Uniform phone height — every screen cropped to iPhone proportions from the top */
+.ba-pair .iphone picture,.screens.uniform .iphone picture{aspect-ratio:9 / 19.5}
+.ba-pair .iphone picture img,.screens.uniform .iphone picture img{height:100%;object-fit:cover;object-position:top center}
+
+/* Lightbox zoom — full-viewport stage that scrolls when zoomed */
+.lightbox{box-sizing:border-box;width:96vw;height:94vh;max-width:none;max-height:none;padding:48px 0 0}
+.lightbox[open]{display:flex;flex-direction:column}
+.lightbox .x{top:0}
+.lb-stage{flex:1;min-height:0;display:flex;overflow:auto;border-radius:10px;touch-action:pan-x pan-y;overscroll-behavior:contain}
+.lb-stage.zoomed{cursor:grab}
+.lb-stage.zoomed:active{cursor:grabbing}
+.lightbox .lb-stage img{flex:none;margin:auto;max-width:none;max-height:none;width:auto;height:auto;user-select:none;-webkit-user-drag:none}
+.lb-tools{position:absolute;top:0;left:0;display:flex;gap:6px;align-items:center}
+.lightbox .lb-tools .x{position:static;color:var(--ink);background:var(--bg)}
+.lightbox .lb-tools .lb-fit{width:auto;padding:0 12px;border-radius:999px;font-family:var(--mono);font-size:12px}
+.lb-pct{min-width:48px;text-align:center;font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+.lightbox p{flex:none}
+
+/* Evidence 02 — labels under screens vs descriptive captions */
+.cs-qnb .device figcaption,.cs-qnb .ba-pair figcaption{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase}
+.cs-qnb .grid-caption,.cs-qnb .screens-caption,.cs-qnb .fig > figcaption{font-family:var(--sans);font-size:14px;line-height:1.55;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.cs-qnb .device figcaption .annot{display:block;margin-top:6px;font-family:var(--sans);font-size:12.5px;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.cs-qnb .browser + figcaption{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase}
