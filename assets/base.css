@@ -142,6 +142,10 @@ button{font:inherit;color:inherit}
   display:grid;place-items:center;font-size:15px;line-height:1;
   transition:border-color var(--dur-fast) var(--ease), transform var(--dur-med) var(--ease);
 }
+/* Small phones: must come after the base toggle rule, or the base size wins */
+@media (max-width:420px){ .theme-toggle{width:30px;height:30px;font-size:13px} }
+/* Very small phones: the header can't fit brand + two links + toggle; Resume stays in the Contact section */
+@media (max-width:400px){ .site-nav .nav-resume{display:none} }
 .theme-toggle:hover{border-color:var(--ink-soft)}
 .theme-toggle:active{transform:scale(.94)}
 
