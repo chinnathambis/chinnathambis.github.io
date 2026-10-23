@@ -380,3 +380,15 @@ figcaption{margin-top:10px;font-family:var(--mono);font-size:12px;line-height:1.
 .cs-qnb .grid-caption,.cs-qnb .screens-caption,.cs-qnb .fig > figcaption{font-family:var(--sans);font-size:14px;line-height:1.55;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
 .cs-qnb .device figcaption .annot{display:block;margin-top:6px;font-family:var(--sans);font-size:12.5px;line-height:1.5;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
 .cs-qnb .browser + figcaption{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase}
+
+/* Phase timeline (no dates) — first used by Evidence 03 · Northline */
+.phases{list-style:none;margin:8px 0 28px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.phases li{border:1px solid var(--line);border-radius:10px;padding:12px 14px 14px;background:var(--bg-raised);font-size:14px;line-height:1.4}
+.phases .st{display:block;margin-bottom:6px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.phases li.done{color:var(--ink-soft)}
+.phases li.now{border-color:var(--accent);color:var(--ink)}
+.phases li.now .st{color:var(--accent)}
+.phases li.later{border-style:dashed;background:transparent}
+.phases li.later .st{color:var(--brass)}
+@media (max-width:640px){ .phases{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.nl-hero img{border-radius:14px}
