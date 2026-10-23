@@ -16,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/base.css?v=202610231400">
-<link rel="stylesheet" href="assets/case-study.css?v=202610231400">
+<link rel="stylesheet" href="assets/base.css?v=202610231630">
+<link rel="stylesheet" href="assets/case-study.css?v=202610231630">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -43,7 +43,7 @@
     <div class="wrap">
       <p class="eyebrow">Evidence / 03 · Northline · Automated trading for crypto futures</p>
       <h1 style="view-transition-name:ev03-title">An auto-trading product where <em>safety</em> is the feature.</h1>
-      <p class="cs-lede" data-reveal>Northline turns trading signals into fully protected crypto futures trades, and gives traders one place to watch, control and stop them, right from their phone.</p>
+      <p class="cs-lede" data-reveal>Northline turns trading signals into crypto futures trades that are protected from the start, and lets traders watch, change or stop them from their phone.</p>
       <dl class="meta six" data-reveal>
         <div><dt>Product</dt><dd>Northline — automated trading for crypto futures</dd></div>
         <div><dt>Role</dt><dd>Founder &amp; product designer</dd></div>
@@ -52,7 +52,7 @@
         <div><dt>Status</dt><dd>Live on real money</dd></div>
         <div><dt>Next</dt><dd>Friends beta → paid subscription</dd></div>
       </dl>
-      <figure class="fig nl-hero" data-reveal style="margin-top:clamp(40px,6vw,72px)"><picture><source type="image/webp" srcset="assets/case/nl/logo-dark-1200.webp?v=202610231400 1200w, assets/case/nl/logo-dark-1600.webp?v=202610231400 1600w, assets/case/nl/logo-dark-2400.webp?v=202610231400 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/logo-dark-2400.webp?v=202610231400" src="assets/case/nl/logo-dark.jpg?v=202610231400" width="2400" height="900" alt="Northline logo: a green stepped N mark, a thin green divider, and the word NORTHLINE over SIGNALS, on near-black." fetchpriority="high" decoding="async" data-zoom></picture></figure>
+      <figure class="fig nl-hero" data-reveal style="margin-top:clamp(40px,6vw,72px)"><picture><source type="image/webp" srcset="assets/case/nl/logo-dark-1200.webp?v=202610231630 1200w, assets/case/nl/logo-dark-1600.webp?v=202610231630 1600w, assets/case/nl/logo-dark-2400.webp?v=202610231630 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/logo-dark-2400.webp?v=202610231630" src="assets/case/nl/logo-dark.jpg?v=202610231630" width="2400" height="900" alt="Northline logo: a green stepped N mark, a thin green divider, and the word NORTHLINE over SIGNALS, on near-black." fetchpriority="high" decoding="async" data-zoom></picture></figure>
     </div>
   </section>
 
@@ -64,7 +64,7 @@
           <li><a href="#problem">02 The Problem</a></li>
           <li><a href="#principles">03 Principles</a></li>
           <li><a href="#how">04 How It Works</a></li>
-          <li><a href="#surface">05 The Control Surface</a></li>
+          <li><a href="#surface">05 The App</a></li>
           <li><a href="#record">06 Designing in the Open</a></li>
           <li><a href="#risk">07 Risk Design</a></li>
           <li><a href="#live">08 Going Live</a></li>
@@ -79,8 +79,8 @@
           <span class="kicker" data-reveal>01 — Overview</span>
           <h2 id="h-overview" data-reveal>More than a signal bot.</h2>
 
-          <p data-reveal>Northline is a signal-driven automated trading engine for crypto futures, delivered as a mobile app with real-time alerts. A trading signal arrives; Northline checks it, sizes it to a fixed risk, places the order with its stop and targets on the exchange, and reports every step in plain language.</p>
-          <p class="soft" data-reveal>Turning alerts into orders is already a solved problem. Northline’s focus is what most tools leave thin: account-level risk control, and honest reporting a trader can trust.</p>
+          <p data-reveal>Northline trades crypto futures automatically from trading signals, and runs as a mobile app with real-time alerts. When a signal arrives, Northline checks it, sizes the trade so a loss stays small, places the order with its stop and targets, and explains every step in plain words.</p>
+          <p class="soft" data-reveal>Plenty of tools already turn alerts into orders. Northline focuses on what they do poorly: protecting the whole account, and reporting results honestly.</p>
           <span class="sub" data-reveal>What I owned</span>
           <div class="scale-tags" data-reveal><span class="tag">Product strategy</span><span class="tag">Product spec</span><span class="tag">Interaction design</span><span class="tag">UI design</span><span class="tag">Brand</span><span class="tag">Safety &amp; risk design</span><span class="tag">AI-directed build</span><span class="tag">Release decisions</span></div>
         </section>
@@ -88,7 +88,7 @@
           <span class="kicker" data-reveal>02 — The Problem</span>
           <h2 id="h-problem" data-reveal>Placing trades is easy. Protecting the account is the hard part.</h2>
 
-          <p data-reveal>The failure that ends a trading account is rarely one bad signal. It’s a position left without a stop, a size that’s too big, or a bot that keeps trading straight through a losing streak.</p>
+          <p data-reveal>Trading accounts are rarely lost to one bad signal. They’re lost to a trade with no stop, a position that’s too big, or a bot that keeps trading through a losing streak.</p>
           <p class="soft" data-reveal>The real question was what a trader needs before trusting a bot with real money, and how to stay in control of it from a phone.</p>
           <div class="cards" data-reveal style="--cols:2"><div class="card"><span class="n">01</span><h3>Every trade protected</h3><p>A stop on the exchange from the moment a position opens, even if the server goes down.</p></div><div class="card"><span class="n">02</span><h3>Limits that hold</h3><p>Caps on daily loss, open risk and losing streaks that apply across every trade, not one at a time.</p></div><div class="card"><span class="n">03</span><h3>Control from a phone</h3><p>See, adjust and stop everything from a phone, without opening a laptop or the exchange.</p></div><div class="card"><span class="n">04</span><h3>Honest numbers</h3><p>Results counted from real closed trades, after fees, with test trades kept out.</p></div></div>
         </section>
@@ -103,14 +103,14 @@
           <span class="kicker" data-reveal>04 — How It Works</span>
           <h2 id="h-how" data-reveal>From alert to protected trade, in seconds.</h2>
 
-          <p data-reveal>Any signal source plugs in through one shared format, so the checking, risk, execution and reporting never change when a new source is added.</p>
-          <div class="cards" data-reveal style="--cols:3"><div class="card"><span class="n">01</span><h3>Signal arrives</h3><p>A trading signal reaches Northline privately. Repeats of the same signal are ignored.</p></div><div class="card"><span class="n">02</span><h3>Checked</h3><p>The entry must sit inside its zone, the stop on the correct side and the targets in order. Anything else is rejected, with the reason.</p></div><div class="card"><span class="n">03</span><h3>Risk engine</h3><p>Daily loss, trades open, total open risk, losing streak and drop from peak are checked, plus guards for fees and tiny positions.</p></div><div class="card"><span class="n">04</span><h3>Sized and placed</h3><p>Sized so a stop-out loses a fixed share of equity; stop and four targets placed on the exchange; stop moves to entry after the first target.</p></div><div class="card"><span class="n">05</span><h3>Reported</h3><p>Every step arrives as an alert in plain words. Open trades are re-checked every few seconds, and a watchdog flags anything that stops answering.</p></div></div>
+          <p data-reveal>Every signal source uses one shared format, so adding a new source doesn’t change anything else.</p>
+          <div class="cards" data-reveal style="--cols:3"><div class="card"><span class="n">01</span><h3>Signal arrives</h3><p>A trading signal reaches Northline privately. Repeats of the same signal are ignored.</p></div><div class="card"><span class="n">02</span><h3>Checked</h3><p>The entry must sit inside its zone, the stop on the correct side and the targets in order. Anything else is rejected, with the reason.</p></div><div class="card"><span class="n">03</span><h3>Risk engine</h3><p>Daily loss, trades open, total open risk, losing streak and drop from peak are checked, plus guards for fees and tiny positions.</p></div><div class="card"><span class="n">04</span><h3>Sized and placed</h3><p>Each trade is sized so a loss costs a fixed share of the account. The stop and four targets go on the exchange, and the stop moves to the entry price after the first target.</p></div><div class="card"><span class="n">05</span><h3>Reported</h3><p>Every step arrives as an alert in plain words. Open trades are re-checked every few seconds, and a watchdog flags anything that stops answering.</p></div></div>
         </section>
         <section class="cs-sec" id="surface" aria-labelledby="h-surface">
-          <span class="kicker" data-reveal>05 — The Control Surface</span>
+          <span class="kicker" data-reveal>05 — The App</span>
           <h2 id="h-surface" data-reveal>Everything in one app</h2>
 
-          <p data-reveal>Real-time alerts say what just happened; the app holds everything else. Only the account owner can open it: every request is verified before anything is shown.</p>
+          <p data-reveal>Alerts tell you what just happened; the app shows everything else. Only the account owner can open it.</p>
           <dl class="defs" data-reveal>
             <div><dt>Home</dt><dd>Balance and its curve, auto-trading status, what fees cost, what happened to every signal, and Close everything.</dd></div>
             <div><dt>Trades</dt><dd>Open trades with live price, stop and target progress, and a red line only when something needs attention.</dd></div>
@@ -122,15 +122,15 @@
           <span class="kicker" data-reveal>06 — Designing in the Open</span>
           <h2 id="h-record" data-reveal>Every screen agreed before it was built.</h2>
 
-          <p data-reveal>Each screen was mocked in the app’s own style, compared against what was live, and agreed before any code changed. The approved screens, their source and the reasoning went into a dated design record, alongside the options that weren’t chosen.</p>
-          <figure class="fig" data-reveal><div class="glimpse"><picture><source type="image/webp" srcset="assets/case/nl/process-setup-three-ways-1200.webp?v=202610231400 1200w, assets/case/nl/process-setup-three-ways-1600.webp?v=202610231400 1600w, assets/case/nl/process-setup-three-ways-2400.webp?v=202610231400 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/process-setup-three-ways-2400.webp?v=202610231400" src="assets/case/nl/process-setup-three-ways.jpg?v=202610231400" width="2400" height="2775" alt="Three versions of the Setup screen side by side: the current build with six sections, a reworked version in four groups with dollar amounts next to percentages, and a simplified version that shows only the five numbers that decide how much can be lost." loading="lazy" decoding="async" data-zoom></picture><span class="more" aria-hidden="true">Compare all three ↗</span></div><figcaption>Setup: current, reworked and simplified. Six sections became four groups, with dollars beside every percentage. Design record · sample numbers.</figcaption></figure>
-          <figure class="fig" data-reveal><div class="glimpse"><picture><source type="image/webp" srcset="assets/case/nl/process-trades-reworked-1200.webp?v=202610231400 1200w, assets/case/nl/process-trades-reworked-1600.webp?v=202610231400 1600w, assets/case/nl/process-trades-reworked-2400.webp?v=202610231400 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/process-trades-reworked-2400.webp?v=202610231400" src="assets/case/nl/process-trades-reworked.jpg?v=202610231400" width="2400" height="2134" alt="Trades and Signals screens, current versus reworked: open trades gain a red warning line only when a stop is missing or a close was refused; history is grouped by day with gross and fees under the net; outcome words are shared across the app." loading="lazy" decoding="async" data-zoom></picture><span class="more" aria-hidden="true">View the full board ↗</span></div><figcaption>Trades and history, current vs reworked. Problems surface in one red line; outcomes use one shared vocabulary. Design record · sample numbers.</figcaption></figure>
+          <p data-reveal>Every screen was mocked up, compared with the live version and approved before any code changed. Approved screens, rejected options and the reasons went into a dated design record.</p>
+          <figure class="fig" data-reveal><div class="glimpse"><picture><source type="image/webp" srcset="assets/case/nl/process-setup-three-ways-1200.webp?v=202610231630 1200w, assets/case/nl/process-setup-three-ways-1600.webp?v=202610231630 1600w, assets/case/nl/process-setup-three-ways-2400.webp?v=202610231630 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/process-setup-three-ways-2400.webp?v=202610231630" src="assets/case/nl/process-setup-three-ways.jpg?v=202610231630" width="2400" height="2775" alt="Three versions of the Setup screen side by side: the current build with six sections, a reworked version in four groups with dollar amounts next to percentages, and a simplified version that shows only the five numbers that decide how much can be lost." loading="lazy" decoding="async" data-zoom></picture><span class="more" aria-hidden="true">Compare all three ↗</span></div><figcaption>Setup: current, reworked and simplified. Six sections became four groups, with dollars beside every percentage. Design record · sample numbers.</figcaption></figure>
+          <figure class="fig" data-reveal><div class="glimpse"><picture><source type="image/webp" srcset="assets/case/nl/process-trades-reworked-1200.webp?v=202610231630 1200w, assets/case/nl/process-trades-reworked-1600.webp?v=202610231630 1600w, assets/case/nl/process-trades-reworked-2400.webp?v=202610231630 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/process-trades-reworked-2400.webp?v=202610231630" src="assets/case/nl/process-trades-reworked.jpg?v=202610231630" width="2400" height="2134" alt="Trades and Signals screens, current versus reworked: open trades gain a red warning line only when a stop is missing or a close was refused; history is grouped by day with gross and fees under the net; outcome words are shared across the app." loading="lazy" decoding="async" data-zoom></picture><span class="more" aria-hidden="true">View the full board ↗</span></div><figcaption>Trades and history, current vs reworked. Problems show as one red line, and results use the same words everywhere. Design record · sample numbers.</figcaption></figure>
         </section>
         <section class="cs-sec" id="risk" aria-labelledby="h-risk">
           <span class="kicker" data-reveal>07 — Risk Design</span>
           <h2 id="h-risk" data-reveal>Limits that only ever say no.</h2>
 
-          <p data-reveal>The risk engine is the product’s core. It can stop a new trade from opening; it can never touch one that’s already running. Every skipped signal is logged with its reason, so the trader can see what the limits did.</p>
+          <p data-reveal>The risk limits are the heart of the product. They can stop a new trade, but never touch one that’s already open. Every skipped signal is logged with the reason.</p>
           <table class="matrix" data-reveal>
             <thead><tr><th scope="col">Limit</th><th scope="col">What happens</th></tr></thead>
             <tbody>
@@ -148,11 +148,11 @@
           <span class="kicker" data-reveal>08 — Going Live</span>
           <h2 id="h-live" data-reveal>Switching from practice money to real money</h2>
 
-          <p data-reveal>The switch from practice money to real money was designed as carefully as any screen: a fresh start where every number begins at zero, demo trades kept but hidden, a pause when the balance falls a set amount below its peak, and safeguards so practice-only tools can’t touch a live account.</p>
-          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/golive-board-1200.webp?v=202610231400 1200w, assets/case/nl/golive-board-1600.webp?v=202610231400 1600w, assets/case/nl/golive-board-2400.webp?v=202610231400 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/golive-board-2400.webp?v=202610231400" src="assets/case/nl/golive-board.jpg?v=202610231400" width="2400" height="1634" alt="Four going-live changes in the app’s style: home on day one, home after a few live trades with a drop-from-peak meter, the pause banner with a Resume button, and the new pause row in risk limits." loading="lazy" decoding="async" data-zoom></picture><figcaption>Going live: from day one to the drop-from-peak pause. Design record · sample numbers.</figcaption></figure>
+          <p data-reveal>Moving from practice money to real money was designed like any other screen. Every number starts at zero, and practice trades are kept but hidden. Trading pauses if the balance drops too far below its peak, and practice-only tools can’t touch a live account.</p>
+          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/golive-board-1200.webp?v=202610231630 1200w, assets/case/nl/golive-board-1600.webp?v=202610231630 1600w, assets/case/nl/golive-board-2400.webp?v=202610231630 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/golive-board-2400.webp?v=202610231630" src="assets/case/nl/golive-board.jpg?v=202610231630" width="2400" height="1634" alt="Four going-live changes in the app’s style: home on day one, home after a few live trades with a drop-from-peak meter, the pause banner with a Resume button, and the new pause row in risk limits." loading="lazy" decoding="async" data-zoom></picture><figcaption>Going live: from day one to the drop-from-peak pause. Design record · sample numbers.</figcaption></figure>
           <span class="sub" data-reveal>Taking a missed trade, safely</span>
-          <p data-reveal>When a signal is missed (say the exchange account was in the wrong mode) and it’s still in range, the trader can take it by hand. One clear question shows the stop, the dollars at risk, the size and the margin; the trade then gets exactly the same protection as an automatic one, marked MANUAL.</p>
-          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/take-trade-1200.webp?v=202610231400 1200w, assets/case/nl/take-trade-1600.webp?v=202610231400 1600w, assets/case/nl/take-trade-2400.webp?v=202610231400 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/take-trade-2400.webp?v=202610231400" src="assets/case/nl/take-trade.jpg?v=202610231400" width="2400" height="1141" alt="Four steps of taking a missed trade: the signals list with a Take this trade button, the signal sheet explaining why it was missed, a confirmation with stop, risk, size and margin, and the opened trade marked manual." loading="lazy" decoding="async" data-zoom></picture><figcaption>Take this trade — from a missed signal to a protected manual trade in four steps. Design record · sample numbers.</figcaption></figure>
+          <p data-reveal>If a signal was missed but is still in range, the trader can take it by hand. One screen shows the stop, the money at risk, the size and the margin. The trade then gets the same protection as an automatic one, marked MANUAL.</p>
+          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/take-trade-1200.webp?v=202610231630 1200w, assets/case/nl/take-trade-1600.webp?v=202610231630 1600w, assets/case/nl/take-trade-2400.webp?v=202610231630 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/take-trade-2400.webp?v=202610231630" src="assets/case/nl/take-trade.jpg?v=202610231630" width="2400" height="1141" alt="Four steps of taking a missed trade: the signals list with a Take this trade button, the signal sheet explaining why it was missed, a confirmation with stop, risk, size and margin, and the opened trade marked manual." loading="lazy" decoding="async" data-zoom></picture><figcaption>Take this trade — from a missed signal to a protected manual trade in four steps. Design record · sample numbers.</figcaption></figure>
         </section>
         <section class="cs-sec" id="brand" aria-labelledby="h-brand">
           <span class="kicker" data-reveal>09 — Brand</span>
@@ -160,8 +160,8 @@
 
           <p data-reveal>The Northline mark is a block N whose diagonal is four even steps, like a staircase or price moving up in steps, drawn as one solid shape. It sits in the app’s own colours: green on near-black, with dark and light versions and an app icon.</p>
           <p class="soft" data-reveal>It was chosen after several rounds: four first directions, ten more ideas, a folded N, a set of minimal N marks and block-letter studies.</p>
-          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/brand-explorations-1200.webp?v=202610231400 1200w, assets/case/nl/brand-explorations-1600.webp?v=202610231400 1600w, assets/case/nl/brand-explorations-2400.webp?v=202610231400 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/brand-explorations-2400.webp?v=202610231400" src="assets/case/nl/brand-explorations.jpg?v=202610231400" width="2400" height="1075" alt="Ten logo ideas for Northline, each shown large and at small sizes: arrow N, true north, constellation, peak, rising bars, folded N, shield arrow, orbit, line to north and a wordmark." loading="lazy" decoding="async" data-zoom></picture><figcaption>Ten of the explored directions, before the stepped N.</figcaption></figure>
-          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/brand-stepped-n-1200.webp?v=202610231400 1200w, assets/case/nl/brand-stepped-n-1600.webp?v=202610231400 1600w, assets/case/nl/brand-stepped-n-2400.webp?v=202610231400 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/brand-stepped-n-2400.webp?v=202610231400" src="assets/case/nl/brand-stepped-n.jpg?v=202610231400" width="2400" height="1142" alt="The chosen Stepped N mark in four step patterns, then the logo on dark and on light." loading="lazy" decoding="async" data-zoom></picture><figcaption>The stepped N, refined: four even steps, on dark and light.</figcaption></figure>
+          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/brand-explorations-1200.webp?v=202610231630 1200w, assets/case/nl/brand-explorations-1600.webp?v=202610231630 1600w, assets/case/nl/brand-explorations-2400.webp?v=202610231630 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/brand-explorations-2400.webp?v=202610231630" src="assets/case/nl/brand-explorations.jpg?v=202610231630" width="2400" height="1075" alt="Ten logo ideas for Northline, each shown large and at small sizes: arrow N, true north, constellation, peak, rising bars, folded N, shield arrow, orbit, line to north and a wordmark." loading="lazy" decoding="async" data-zoom></picture><figcaption>Ten of the explored directions, before the stepped N.</figcaption></figure>
+          <figure class="fig" data-reveal><picture><source type="image/webp" srcset="assets/case/nl/brand-stepped-n-1200.webp?v=202610231630 1200w, assets/case/nl/brand-stepped-n-1600.webp?v=202610231630 1600w, assets/case/nl/brand-stepped-n-2400.webp?v=202610231630 2400w" sizes="(max-width: 1000px) calc(100vw - 32px), 720px"><img data-full="assets/case/nl/brand-stepped-n-2400.webp?v=202610231630" src="assets/case/nl/brand-stepped-n.jpg?v=202610231630" width="2400" height="1142" alt="The chosen Stepped N mark in four step patterns, then the logo on dark and on light." loading="lazy" decoding="async" data-zoom></picture><figcaption>The stepped N, refined: four even steps, on dark and light.</figcaption></figure>
         </section>
         <section class="cs-sec" id="build" aria-labelledby="h-build">
           <span class="kicker" data-reveal>10 — How It Was Built</span>
@@ -178,7 +178,7 @@
           <p data-reveal>Northline is live and trading real money with its first user. A small friends beta comes next; after that, a paid subscription where each trader connects their own exchange account and keeps their own funds. Northline never holds money or trades on anyone’s behalf.</p>
           <span class="sub" data-reveal>Reflection</span>
           <p data-reveal>Most of the design work wasn’t about placing trades. It was about the moments when the bot does nothing, and making sure I can always see why.</p>
-          <p data-reveal>Working with an AI coding agent made the build fast, so the spec, the agreed mocks and the tests were what kept the speed safe.</p>
+          <p data-reveal>An AI coding agent made the build fast. The written spec, approved mockups and tests kept it safe.</p>
         </section>
 
         <div class="next">
@@ -197,12 +197,12 @@
   </div>
 </footer>
 
-<script src="assets/site.js?v=202610231400"></script>
+<script src="assets/site.js?v=202610231630"></script>
 <dialog class="lightbox" aria-label="Enlarged image">
   <button class="x" type="button" aria-label="Close">×</button>
   <img alt="">
   <p></p>
 </dialog>
-<script src="assets/case-study.js?v=202610231400"></script>
+<script src="assets/case-study.js?v=202610231630"></script>
 </body>
 </html>
