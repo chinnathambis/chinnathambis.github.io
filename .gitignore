@@ -30,3 +30,7 @@ Thumbs.db
 # Source exports (web-ready copies live in assets/case/)
 assets/raw/
 assets/case/_src/
+
+# Resume: keep the source, build script and final files; skip intermediates
+resume/*.html
+resume/__pycache__/
