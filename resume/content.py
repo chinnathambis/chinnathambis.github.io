@@ -26,7 +26,7 @@ EXPERIENCE = [
         "bullets": [
             "Defined and designed an automated crypto futures trading product, with a mobile app and real-time alerts.",
             "Wrote the product and technical spec, and designed every screen and safety rule, including risk limits that can block a trade but never change an open one.",
-            "Directed the build with an AI coding agent (Claude Code), approving every design and deploy, with tests on every change.",
+            "Directed the build with an AI coding agent, approving every design and deploy, with tests on every change.",
             "Took the product live with real money. A friends beta and a paid subscription are planned.",
         ],
         "projects": [],
@@ -89,7 +89,7 @@ SKILLS = [  # (group, items)
     ("Interaction design", "Information architecture, interaction design, prototyping, high-fidelity UI, responsive design"),
     ("Design systems", "Design systems, reusable components, design tokens and variables, typography, light and dark themes"),
     ("Leadership", "Design reviews, stakeholder alignment, cross-functional collaboration, mentoring, design quality"),
-    ("AI tools", "ChatGPT, Claude, Claude Code, Cursor, Figma AI, Figma Make, v0, Lovable, Adobe Firefly, Google Gemini, Relume, Perplexity"),
+    ("AI tools", "ChatGPT, Cursor, Figma AI, Figma Make, v0, Lovable, Adobe Firefly, Google Gemini, Relume, Perplexity"),
     ("Other tools", "Figma, Slack, Microsoft Teams, Notion"),
 ]
 
